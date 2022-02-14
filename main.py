@@ -98,97 +98,97 @@ def main():
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 3:
-                                    px.px2 = text
+                                    px.px3 = text
                                     print(px.px3)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 4:
-                                    px.px2 = text
+                                    px.px4 = text
                                     print(px.px4)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 5:
-                                    px.px2 = text
+                                    px.px5 = text
                                     print(px.px5)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 6:
-                                    px.px2 = text
+                                    px.px6 = text
                                     print(px.px6)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 7:
-                                    px.px2 = text
+                                    px.px7 = text
                                     print(px.px7)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 8:
-                                    px.px2 = text
+                                    px.px8 = text
                                     print(px.px8)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 9:
-                                    px.px2 = text
+                                    px.px9 = text
                                     print(px.px9)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 10:
-                                    px.px2 = text
+                                    px.px10 = text
                                     print(px.px10)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 11:
-                                    px.px2 = text
+                                    px.px11 = text
                                     print(px.px11)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 12:
-                                    px.px2 = text
+                                    px.px12 = text
                                     print(px.px12)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 13:
-                                    px.px2 = text
+                                    px.px13 = text
                                     print(px.px13)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 14:
-                                    px.px2 = text
+                                    px.px14 = text
                                     print(px.px14)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 15:
-                                    px.px2 = text
+                                    px.px15 = text
                                     print(px.px15)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 16:
-                                    px.px2 = text
+                                    px.px16 = text
                                     print(px.px16)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 17:
-                                    px.px2 = text
+                                    px.px17 = text
                                     print(px.px17)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 18:
-                                    px.px2 = text
+                                    px.px18 = text
                                     print(px.px18)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 19:
-                                    px.px2 = text
+                                    px.px19 = text
                                     print(px.px19)
                                     text = ''
                                     px.loop = px.loop + 1
                             elif px.loop == 20:
-                                    px.px2 = text
+                                    px.px20 = text
                                     print(px.px20)
                                     text = ''
                                     px.loop = px.loop + 1
                             else:
-                                    px.px2 = text
+                                    px.px21 = text
                                     print(px.px21)
                                     text = ''
                                     px.loop = px.loop + 1

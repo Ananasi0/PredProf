@@ -1,5 +1,5 @@
-import pygame as pg
 import pygame
+import pygame as pg
 
 class px():
     px1 = 0
@@ -25,15 +25,31 @@ class px():
     px20 = 0
     px21 = 0
     loop = 1
-    step = 2
-    
+    step = 1
+
+def start():
+    print("Ok, let's go")
+    px.step = px.step + 1
+
+def button(screen, position, text):
+        font = pygame.font.SysFont("Arial", 50)
+        text_render = font.render(text, 1, (255, 0, 0))
+        x, y, w , h = text_render.get_rect()
+        x, y = position
+        pygame.draw.line(screen, (150, 150, 150), (x, y), (x + w , y), 5)
+        pygame.draw.line(screen, (150, 150, 150), (x, y - 2), (x, y + h), 5)
+        pygame.draw.line(screen, (50, 50, 50), (x, y + h), (x + w , y + h), 5)
+        pygame.draw.line(screen, (50, 50, 50), (x + w , y+h), [x + w , y], 5)
+        pygame.draw.rect(screen, (100, 100, 100), (x, y, w , h))
+        return screen.blit(text_render, (x, y))
+
 def main():
-    screen = pg.display.set_mode((500, 500))
-    font = pg.font.Font(None, 32)
-    clock = pg.time.Clock()
-    input_box = pg.Rect(150, 60, 150, 38)
-    color_inactive = pg.Color(48, 200, 120)
-    color_active = pg.Color(45, 242, 13)
+    screen = pygame.display.set_mode((500, 500))
+    font = pygame.font.Font(None, 32)
+    clock = pygame.time.Clock()
+    input_box = pygame.Rect(150, 60, 150, 38)
+    color_inactive = pygame.Color(48, 200, 120)
+    color_active = pygame.Color(45, 242, 13)
     color = color_inactive
     active = False
     text = ''
@@ -42,10 +58,23 @@ def main():
     
     
     while not done:
-        if px.step == 2:
-            for event in pg.event.get():
-                if event.type == pg.QUIT:
-                    done = True
+        if px.step == 1:
+                for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                                done = True
+                        img1 = font.render('Расчёт данных', True, (10, 100, 150))
+                        txt_surface = font.render(text, True, color)
+                        screen.fill((3, 187, 231))  
+                        screen.blit(img1, (150, 10))
+                        b1 = button(screen, (200, 200), "Start")
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                if b1.collidepoint(event.pos):
+                                        start()
+                pygame.display.flip()
+        elif px.step == 2:
+                for event in pg.event.get():
+                        if event.type == pg.QUIT:
+                            done = True
                 if event.type == pg.MOUSEBUTTONDOWN:
                     # If the user clicked on the input_box rect.
                     if input_box.collidepoint(event.pos):
@@ -167,30 +196,30 @@ def main():
                             text = text[:-1]
                         else:
                             text += event.unicode
-
+        else:
+            print("Error")
         
-            screen.fill((3, 187, 231))  
-            txt_surface = font.render(text, True, color)
-            
-            
-            if px.loop < 22:
-                img = font.render('Введите значение PX' + str(px.loop), True, (10, 100, 150))
-            elif px.loop > 21:
-                img = font.render('Выберите вариант расчётов', True, (10, 100, 150))
-            screen.blit(img, (145, 10))
-            # Resize the box if the text is too long.
-            width = max(200, txt_surface.get_width()+10)
-            input_box.w = width
-            # Blit the text.
-            screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
-            # Blit the input_box rect.
-            pg.draw.rect(screen, color, input_box, 2)
+        screen.fill((3, 187, 231))  
+        txt_surface = font.render(text, True, color)
 
-        pg.display.flip()
+        if px.loop < 22:
+                img = font.render('Введите значение PX' + str(px.loop), True, (10, 100, 150))
+        elif px.loop > 21:
+                img = font.render('Выберите вариант расчётов', True, (10, 100, 150))
+        screen.blit(img, (145, 10))
+        # Resize the box if the text is too long.
+        width = max(200, txt_surface.get_width()+10)
+        input_box.w = width
+        # Blit the text.
+        screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
+        # Blit the input_box rect.
+        pg.draw.rect(screen, color, input_box, 2)
+
+        pg.display.update()
         clock.tick(30)
 
 
 if __name__ == '__main__':
-    pg.init()
+    pygame.init()
     main()
-    pg.quit()
+    pygame.quit()

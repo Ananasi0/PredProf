@@ -72,9 +72,9 @@ def main():
                                         start()
                 pygame.display.flip()
         elif px.step == 2:
-                for event in pg.event.get():
-                        if event.type == pg.QUIT:
-                            done = True
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    done = True
                 if event.type == pg.MOUSEBUTTONDOWN:
                     # If the user clicked on the input_box rect.
                     if input_box.collidepoint(event.pos):
@@ -187,7 +187,7 @@ def main():
                                     print(px.px20)
                                     text = ''
                                     px.loop = px.loop + 1
-                            elif px.loop == 21:
+                            else:
                                     px.px2 = text
                                     print(px.px21)
                                     text = ''
@@ -222,3 +222,4 @@ if __name__ == '__main__':
     pygame.init()
     main()
     pygame.quit()
+

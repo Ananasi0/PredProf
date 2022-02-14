@@ -24,7 +24,7 @@ class px():
     pxd2 = 0
     pxd3 = 0
     pxd4 = 0
-
+    loop = 0
 
 def main():
     screen = pg.display.set_mode((500, 500))
@@ -55,9 +55,16 @@ def main():
             if event.type == pg.KEYDOWN:
                 if active:
                     if event.key == pg.K_RETURN:
-                        px.px1 = text
-                        print(px.px1)
-                        text = ''
+                        if loop == 1:
+                        	px.px1 = text
+                        	print(px.px1)
+                        	text = ''
+                        	loop += 1
+                        if loop == 2:
+                        	px.px2 = text
+                        	print(px.px2)
+                        	text = ''
+                        	loop += 1
                     elif event.key == pg.K_BACKSPACE:
                         text = text[:-1]
                     else:

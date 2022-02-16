@@ -26,10 +26,20 @@ class px():
     px21 = 0
     loop = 1
     step = 1
+    choise = None
 
 def start():
-    print("Ok, let's go")
     px.step = px.step + 1
+
+def VariantA():
+        px.choise = 0
+        px.step = px.step + 1
+def VariantB():
+        px.choise = 1
+        px.step = px.step + 1
+def VariantC():
+        px.choise = 2
+        px.step = px.step + 1
 
 def button(screen, position, text):
         font = pygame.font.SysFont("Sans", 50)
@@ -66,23 +76,22 @@ def main():
                         txt_surface = font.render(text, True, color)
                         screen.fill((50, 105, 0))  
                         screen.blit(img1, (175, 10))
-                        b1 = button(screen, (195, 200), " Start ")
+                        b = button(screen, (195, 200), " Start ")
                         if event.type == pygame.MOUSEBUTTONDOWN:
-                                if b1.collidepoint(event.pos):
+                                if b.collidepoint(event.pos):
                                         start()
                 pygame.display.flip()
+
+
         elif px.step == 2:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     done = True
                 if event.type == pg.MOUSEBUTTONDOWN:
-                    # If the user clicked on the input_box rect.
                     if input_box.collidepoint(event.pos):
-                        # Toggle the active variable.
                         active = not active
                     else:
                         active = False
-                    # Change the current color of the input box.
                     color = color_active if active else color_inactive
                 if event.type == pg.KEYDOWN:
                     if active:
@@ -187,31 +196,61 @@ def main():
                                     print(px.px20)
                                     text = ''
                                     px.loop = px.loop + 1
-                            else:
+                        
+                            elif px.loop == 21:
                                     px.px21 = text
                                     print(px.px21)
                                     text = ''
                                     px.loop = px.loop + 1
+                            else:
+                                print("Error")
+                        
                         elif event.key == pg.K_BACKSPACE:
                             text = text[:-1]
                         else:
                             text += event.unicode
                 screen.fill((50, 105, 0))  
                 txt_surface = font.render(text, True, color)
-
+                width = max(200, txt_surface.get_width()+10)
+                input_box.w = width
+                screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
+                pg.draw.rect(screen, color, input_box, 2)
                 if px.loop < 22:
                         img = font.render('Введите значение PX' + str(px.loop), True, (255, 255, 255))
                         screen.blit(img, (145, 10))
-                elif px.loop > 21:
+                elif px.loop == 22:
+                        screen.fill((50, 105, 0))
                         img = font.render('Выберите вариант расчётов', True, (255, 255, 255))
                         screen.blit(img, (125, 10))
-                # Resize the box if the text is too long.
-                width = max(200, txt_surface.get_width()+10)
-                input_box.w = width
-                # Blit the text.
-                screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
-                # Blit the input_box rect.
-                pg.draw.rect(screen, color, input_box, 2)
+                        px.step = px.step + 1
+                else:
+                        print("Error")
+
+        
+        elif px.step == 3:
+                for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                                done = True
+                        b1 = button(screen, (150, 100), "Вариант А")
+                        b2 = button(screen, (150, 200), "Вариант Б")
+                        b3 = button(screen, (150, 300), "Вариант В")
+                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                if b1.collidepoint(event.pos):
+                                                VariantA()
+                                elif b2.collidepoint(event.pos):
+                                                VariantB()
+                                elif b3.collidepoint(event.pos):
+                                                VariantC()
+                                else:
+                                        print("Error")    
+                pygame.display.flip()
+        
+        
+        elif px.step == 4:
+                print("IN DEV")
+
+
+
         else:
             print("Error")
 

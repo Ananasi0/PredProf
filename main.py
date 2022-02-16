@@ -32,15 +32,15 @@ def start():
     px.step = px.step + 1
 
 def button(screen, position, text):
-        font = pygame.font.SysFont("Arial", 50)
-        text_render = font.render(text, 1, (255, 0, 0))
+        font = pygame.font.SysFont("Sans", 50)
+        text_render = font.render(text, 1, (32, 32, 32))
         x, y, w , h = text_render.get_rect()
         x, y = position
         pygame.draw.line(screen, (150, 150, 150), (x, y), (x + w , y), 5)
         pygame.draw.line(screen, (150, 150, 150), (x, y - 2), (x, y + h), 5)
         pygame.draw.line(screen, (50, 50, 50), (x, y + h), (x + w , y + h), 5)
         pygame.draw.line(screen, (50, 50, 50), (x + w , y+h), [x + w , y], 5)
-        pygame.draw.rect(screen, (100, 100, 100), (x, y, w , h))
+        pygame.draw.rect(screen, (190, 190, 200), (x, y, w , h))
         return screen.blit(text_render, (x, y))
 
 def main():
@@ -62,11 +62,11 @@ def main():
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 done = True
-                        img1 = font.render('Расчёт данных', True, (10, 100, 150))
+                        img1 = font.render('Расчёт данных', True, (255, 255, 255))
                         txt_surface = font.render(text, True, color)
-                        screen.fill((3, 187, 231))  
-                        screen.blit(img1, (150, 10))
-                        b1 = button(screen, (200, 200), "Start")
+                        screen.fill((50, 105, 0))  
+                        screen.blit(img1, (175, 10))
+                        b1 = button(screen, (195, 200), " Start ")
                         if event.type == pygame.MOUSEBUTTONDOWN:
                                 if b1.collidepoint(event.pos):
                                         start()
@@ -196,14 +196,15 @@ def main():
                             text = text[:-1]
                         else:
                             text += event.unicode
-                screen.fill((3, 187, 231))  
+                screen.fill((50, 105, 0))  
                 txt_surface = font.render(text, True, color)
 
                 if px.loop < 22:
-                        img = font.render('Введите значение PX' + str(px.loop), True, (10, 100, 150))
+                        img = font.render('Введите значение PX' + str(px.loop), True, (255, 255, 255))
+                        screen.blit(img, (145, 10))
                 elif px.loop > 21:
-                        img = font.render('Выберите вариант расчётов', True, (10, 100, 150))
-                screen.blit(img, (145, 10))
+                        img = font.render('Выберите вариант расчётов', True, (255, 255, 255))
+                        screen.blit(img, (125, 10))
                 # Resize the box if the text is too long.
                 width = max(200, txt_surface.get_width()+10)
                 input_box.w = width

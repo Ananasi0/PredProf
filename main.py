@@ -54,7 +54,8 @@ def button(screen, position, text):
         return screen.blit(text_render, (x, y))
 
 def main():
-    screen = pygame.display.set_mode((500, 500))
+    infoObject = pygame.display.Info()
+    screen = pygame.display.set_mode((infoObject.current_w, infoObject.current_h)) 
     font = pygame.font.Font(None, 32)
     clock = pygame.time.Clock()
     input_box = pygame.Rect(150, 60, 150, 38)
@@ -72,14 +73,20 @@ def main():
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 done = True
+                        if event.type == pg.KEYDOWN:
+                            if event.key == pg.K_ESCAPE:
+                                done = True
                         img1 = font.render('Расчёт данных', True, (255, 255, 255))
                         txt_surface = font.render(text, True, color)
                         screen.fill((50, 105, 0))  
                         screen.blit(img1, (175, 10))
                         b = button(screen, (195, 200), " Start ")
-                        if event.type == pygame.MOUSEBUTTONDOWN:
-                                if b.collidepoint(event.pos):
-                                        start()
+                        bexit = button (screen, (infoObject.current_w - 60, 10), " X ")
+                        if event.type == pg.MOUSEBUTTONDOWN:
+                            if b.collidepoint(event.pos):
+                                start()
+                            if bexit.collidepoint(event.pos):
+                                done = True
                 pygame.display.flip()
 
 
@@ -94,6 +101,8 @@ def main():
                         active = False
                     color = color_active if active else color_inactive
                 if event.type == pg.KEYDOWN:
+                    if event.key == pg.K_ESCAPE:
+                        done = True
                     if active:
                         if event.key == pg.K_RETURN:
                             if px.loop == 1:
@@ -247,7 +256,7 @@ def main():
         
         
         elif px.step == 4:
-                print("IN DEV")
+                done = True
 
 
 
@@ -262,4 +271,3 @@ if __name__ == '__main__':
     pygame.init()
     main()
     pygame.quit()
-

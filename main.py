@@ -41,8 +41,8 @@ def VariantC():
         px.choise = 2
         px.step = px.step + 1
 
-def button(screen, position, text):
-        font = pygame.font.SysFont("Sans", 50)
+def button(screen, position, text, font_size):
+        font = pygame.font.SysFont("Sans", font_size)
         text_render = font.render(text, 1, (32, 32, 32))
         x, y, w , h = text_render.get_rect()
         x, y = position
@@ -58,7 +58,7 @@ def main():
     screen = pygame.display.set_mode((infoObject.current_w, infoObject.current_h)) 
     font = pygame.font.Font(None, 32)
     clock = pygame.time.Clock()
-    input_box = pygame.Rect(150, 60, 150, 38)
+    input_box = pygame.Rect(infoObject.current_w - 890, 175, infoObject.current_w - 200, 38)
     color_inactive = pygame.Color(48, 200, 120)
     color_active = pygame.Color(45, 242, 13)
     color = color_inactive
@@ -79,14 +79,14 @@ def main():
                         img1 = font.render('Расчёт данных', True, (255, 255, 255))
                         txt_surface = font.render(text, True, color)
                         screen.fill((50, 105, 0))  
-                        screen.blit(img1, (175, 10))
-                        b = button(screen, (195, 200), " Start ")
-                        bexit = button (screen, (infoObject.current_w - 60, 10), " X ")
+                        screen.blit(img1, (infoObject.current_w - 870, 10))
+                        b = button(screen, (infoObject.current_w - 870, 300), " Start ", 70)
+                        bexit = button (screen, (infoObject.current_w - 60, 10), " X ", 50)
                         if event.type == pg.MOUSEBUTTONDOWN:
-                            if b.collidepoint(event.pos):
-                                start()
                             if bexit.collidepoint(event.pos):
                                 done = True
+                            if b.collidepoint(event.pos):
+                                start()
                 pygame.display.flip()
 
 
@@ -226,23 +226,27 @@ def main():
                 pg.draw.rect(screen, color, input_box, 2)
                 if px.loop < 22:
                         img = font.render('Введите значение PX' + str(px.loop), True, (255, 255, 255))
-                        screen.blit(img, (145, 10))
+                        screen.blit(img, (infoObject.current_w - 890, 100))
                 elif px.loop == 22:
                         screen.fill((50, 105, 0))
                         img = font.render('Выберите вариант расчётов', True, (255, 255, 255))
-                        screen.blit(img, (125, 10))
+                        screen.blit(img, (infoObject.current_w - 900, 10))
                         px.step = px.step + 1
                 else:
                         print("Error")
+                bexit = button (screen, (infoObject.current_w - 60, 10), " X ", 50)
+                if event.type == pg.MOUSEBUTTONDOWN:
+                        if bexit.collidepoint(event.pos):
+                                done = True
 
         
         elif px.step == 3:
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 done = True
-                        b1 = button(screen, (150, 100), "Вариант А")
-                        b2 = button(screen, (150, 200), "Вариант Б")
-                        b3 = button(screen, (150, 300), "Вариант В")
+                        b1 = button(screen, (infoObject.current_w - 870, 100), "Вариант А", 50)
+                        b2 = button(screen, (infoObject.current_w - 870, 200), "Вариант Б", 50)
+                        b3 = button(screen, (infoObject.current_w - 870, 300), "Вариант В", 50)
                         if event.type == pygame.MOUSEBUTTONDOWN:
                                 if b1.collidepoint(event.pos):
                                                 VariantA()
@@ -251,7 +255,11 @@ def main():
                                 elif b3.collidepoint(event.pos):
                                                 VariantC()
                                 else:
-                                        print("Error")    
+                                        print("Error")
+                        bexit = button (screen, (infoObject.current_w - 60, 10), " X ", 50)
+                        if event.type == pg.MOUSEBUTTONDOWN:
+                                if bexit.collidepoint(event.pos):
+                                        done = True
                 pygame.display.flip()
         
         

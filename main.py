@@ -41,6 +41,12 @@ def VariantC():
         px.choise = 2
         px.step = px.step + 1
 
+def render(screen, text, position, font_size):
+    font = pygame.font.SysFont("Sans", font_size)
+    text_render = font.render(text, 1, (255, 255, 255))
+    x, y = position
+    return screen.blit(text_render, (x, y))
+
 def button(screen, position, text, font_size):
         font = pygame.font.SysFont("Sans", font_size)
         text_render = font.render(text, 1, (32, 32, 32))
@@ -205,7 +211,6 @@ def main():
                                     print(px.px20)
                                     text = ''
                                     px.loop = px.loop + 1
-                        
                             elif px.loop == 21:
                                     px.px21 = text
                                     print(px.px21)
@@ -227,6 +232,50 @@ def main():
                 if px.loop < 22:
                         img = font.render('Введите значение PX' + str(px.loop), True, (255, 255, 255))
                         screen.blit(img, (infoObject.current_w - 890, 100))
+                        if px.loop == 1:
+                            render(screen, "Физико-химические и механические свойства изоляции", (100,100), 40)
+                        elif px.loop == 2:
+                            render(screen, "Электрические параметры изоляции", (100,100), 40)
+                        elif px.loop == 3:
+                            render(screen, "Электрические параметры радиоэлектронных и микропроцессорных устройств", (100,100), 40)
+                        elif px.loop == 4:
+                            render(screen, "Физико-химические свойства полимерной изоляции оболочки кабелей и проводов", (100,100), 40)
+                        elif px.loop == 5:
+                            render(screen, "Электрические параметры кабелей и проводов", (100,100), 40)
+                        elif px.loop == 6:
+                            render(screen, "Состояние обмоток электрических машин и трансформаторов", (100,100), 40)
+                        elif px.loop == 7:
+                            render(screen, "Показатели качества трансформаторного масла", (100,100), 40)
+                        elif px.loop == 8:
+                            render(screen, "Толщина стенки бака маслянного трансформатора", (100,100), 40)
+                        elif px.loop == 9:
+                            render(screen, "Количество циклов включения-выключения аппарата вторичных цепей", (100,100), 40)
+                        elif px.loop == 10:
+                            render(screen, "Сопротивление контактных соединений аппаратуры управления", (100,100), 40)
+                        elif px.loop == 11:
+                            render(screen, "Рабочие характеристики и долговечность стационарных свиницово-кислотных аккумуляторных батарей", (100,100), 40)
+                        elif px.loop == 12:
+                            render(screen, "Состав электролита аккумуляторных батарей", (100,100), 40)
+                        elif px.loop == 13:
+                            render(screen, "Воздушные зазоры между статером и ротером электрических машин", (100,100), 40)
+                        elif px.loop == 14:
+                            render(screen, "Зазоры и величина вибрации в подшипниках скольжения электродвигателя", (100,100), 40)
+                        elif px.loop == 15:
+                            render(screen, "Прочность и вибростойкость оборудования", (100,100), 40)
+                        elif px.loop == 16:
+                            render(screen, "Время и разновременность замыкания и размыкания главных контактов выключателей", (100,100), 40)
+                        elif px.loop == 17:
+                            render(screen, "Сопротивление постоянному току трубчатых электронагревателей", (100,100), 40)
+                        elif px.loop == 18:
+                            render(screen, "Срок службы", (100,100), 40)
+                        elif px.loop == 19:
+                            render(screen, "Наработка", (100,100), 40)
+                        elif px.loop == 20:
+                            render(screen, "Характеристики чехла привода СУЗ - ШЭМ", (100,100), 40)
+                        elif px.loop == 21:
+                            render(screen, "Электрические характеристики датчиков положения привода СУЗ - ШЭМ", (100,100), 40)
+                        else:
+                            print("Error")
                 elif px.loop == 22:
                         screen.fill((50, 105, 0))
                         img = font.render('Выберите вариант расчётов', True, (255, 255, 255))

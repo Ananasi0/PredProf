@@ -86,7 +86,7 @@ def main():
                         txt_surface = font.render(text, True, color)
                         screen.fill((50, 105, 0))  
                         screen.blit(img1, (infoObject.current_w - 870, 10))
-                        b = button(screen, (infoObject.current_w - 870, 300), " Start ", 70)
+                        b = button(screen, (infoObject.current_w - 870, 200), " Start ", 70)
                         bexit = button (screen, (infoObject.current_w - 60, 10), " X ", 50)
                         if event.type == pg.MOUSEBUTTONDOWN:
                             if bexit.collidepoint(event.pos):
@@ -96,7 +96,7 @@ def main():
                 pygame.display.flip()
 
 
-        elif px.step == 2:
+        elif px.step == 3:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     done = True
@@ -231,7 +231,7 @@ def main():
                 pg.draw.rect(screen, color, input_box, 2)
                 if px.loop < 22:
                         img = font.render('Введите значение PX' + str(px.loop), True, (255, 255, 255))
-                        screen.blit(img, (infoObject.current_w - 890, 100))
+                        screen.blit(img, (infoObject.current_w - 890, 200))
                         if px.loop == 1:
                             render(screen, "Физико-химические и механические свойства изоляции", (100,100), 40)
                         elif px.loop == 2:
@@ -289,10 +289,11 @@ def main():
                                 done = True
 
         
-        elif px.step == 3:
+        elif px.step == 2:
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 done = True
+                        screen.fill((50, 105, 0))
                         b1 = button(screen, (infoObject.current_w - 870, 100), "Вариант А", 50)
                         b2 = button(screen, (infoObject.current_w - 870, 200), "Вариант Б", 50)
                         b3 = button(screen, (infoObject.current_w - 870, 300), "Вариант В", 50)

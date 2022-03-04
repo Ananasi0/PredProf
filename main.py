@@ -47,19 +47,23 @@ def render(screen, text, position, font_size):
     x, y = position
     return screen.blit(text_render, (x, y))
 
-def button(screen, position, text, font_size):
+
+def main():
+    def button(screen, position, text, font_size, isel = True):
         font = pygame.font.SysFont("Sans", font_size)
         text_render = font.render(text, 1, (32, 32, 32))
         x, y, w , h = text_render.get_rect()
-        x, y = position
+        if isel:
+        	x, y = position
+        else:
+        	x = infoObject.current_w / 2 - w / 2
+        	y = position[1]
         pygame.draw.line(screen, (150, 150, 150), (x, y), (x + w , y), 5)
         pygame.draw.line(screen, (150, 150, 150), (x, y - 2), (x, y + h), 5)
         pygame.draw.line(screen, (50, 50, 50), (x, y + h), (x + w , y + h), 5)
         pygame.draw.line(screen, (50, 50, 50), (x + w , y+h), [x + w , y], 5)
         pygame.draw.rect(screen, (190, 190, 200), (x, y, w , h))
         return screen.blit(text_render, (x, y))
-
-def main():
     infoObject = pygame.display.Info()
     screen = pygame.display.set_mode((infoObject.current_w, infoObject.current_h)) 
     font = pygame.font.Font(None, 32)
@@ -233,47 +237,47 @@ def main():
                         img = font.render('Введите значение PX' + str(px.loop), True, (255, 255, 255))
                         screen.blit(img, (infoObject.current_w - 890, 100))
                         if px.loop == 1:
-                            render(screen, "Физико-химические и механические свойства изоляции", (100,100), 40)
+                            render(screen, "Физико-химические и механические свойства изоляции", (100,300), 40)
                         elif px.loop == 2:
-                            render(screen, "Электрические параметры изоляции", (100,100), 40)
+                            render(screen, "Электрические параметры изоляции", (100,300), 40)
                         elif px.loop == 3:
-                            render(screen, "Электрические параметры радиоэлектронных и микропроцессорных устройств", (100,100), 40)
+                            render(screen, "Электрические параметры радиоэлектронных и микропроцессорных устройств", (100,300), 40)
                         elif px.loop == 4:
-                            render(screen, "Физико-химические свойства полимерной изоляции оболочки кабелей и проводов", (100,100), 40)
+                            render(screen, "Физико-химические свойства полимерной изоляции оболочки кабелей и проводов", (100,300), 40)
                         elif px.loop == 5:
-                            render(screen, "Электрические параметры кабелей и проводов", (100,100), 40)
+                            render(screen, "Электрические параметры кабелей и проводов", (100,300), 40)
                         elif px.loop == 6:
-                            render(screen, "Состояние обмоток электрических машин и трансформаторов", (100,100), 40)
+                            render(screen, "Состояние обмоток электрических машин и трансформаторов", (100,300), 40)
                         elif px.loop == 7:
-                            render(screen, "Показатели качества трансформаторного масла", (100,100), 40)
+                            render(screen, "Показатели качества трансформаторного масла", (100,300), 40)
                         elif px.loop == 8:
-                            render(screen, "Толщина стенки бака маслянного трансформатора", (100,100), 40)
+                            render(screen, "Толщина стенки бака маслянного трансформатора", (100,300), 40)
                         elif px.loop == 9:
-                            render(screen, "Количество циклов включения-выключения аппарата вторичных цепей", (100,100), 40)
+                            render(screen, "Количество циклов включения-выключения аппарата вторичных цепей", (100,300), 40)
                         elif px.loop == 10:
-                            render(screen, "Сопротивление контактных соединений аппаратуры управления", (100,100), 40)
+                            render(screen, "Сопротивление контактных соединений аппаратуры управления", (100,300), 40)
                         elif px.loop == 11:
-                            render(screen, "Рабочие характеристики и долговечность стационарных свиницово-кислотных аккумуляторных батарей", (100,100), 40)
+                            render(screen, "Рабочие характеристики и долговечность стационарных свиницово-кислотных аккумуляторных батарей", (100,300), 40)
                         elif px.loop == 12:
-                            render(screen, "Состав электролита аккумуляторных батарей", (100,100), 40)
+                            render(screen, "Состав электролита аккумуляторных батарей", (100,300), 40)
                         elif px.loop == 13:
-                            render(screen, "Воздушные зазоры между статером и ротером электрических машин", (100,100), 40)
+                            render(screen, "Воздушные зазоры между статером и ротером электрических машин", (100,300), 40)
                         elif px.loop == 14:
-                            render(screen, "Зазоры и величина вибрации в подшипниках скольжения электродвигателя", (100,100), 40)
+                            render(screen, "Зазоры и величина вибрации в подшипниках скольжения электродвигателя", (100,300), 40)
                         elif px.loop == 15:
-                            render(screen, "Прочность и вибростойкость оборудования", (100,100), 40)
+                            render(screen, "Прочность и вибростойкость оборудования", (100,300), 40)
                         elif px.loop == 16:
-                            render(screen, "Время и разновременность замыкания и размыкания главных контактов выключателей", (100,100), 40)
+                            render(screen, "Время и разновременность замыкания и размыкания главных контактов выключателей", (100,300), 40)
                         elif px.loop == 17:
-                            render(screen, "Сопротивление постоянному току трубчатых электронагревателей", (100,100), 40)
+                            render(screen, "Сопротивление постоянному току трубчатых электронагревателей", (100,300), 40)
                         elif px.loop == 18:
-                            render(screen, "Срок службы", (100,100), 40)
+                            render(screen, "Срок службы", (100,300), 40)
                         elif px.loop == 19:
-                            render(screen, "Наработка", (100,100), 40)
+                            render(screen, "Наработка", (100,300), 40)
                         elif px.loop == 20:
-                            render(screen, "Характеристики чехла привода СУЗ - ШЭМ", (100,100), 40)
+                            render(screen, "Характеристики чехла привода СУЗ - ШЭМ", (100,300), 40)
                         elif px.loop == 21:
-                            render(screen, "Электрические характеристики датчиков положения привода СУЗ - ШЭМ", (100,100), 40)
+                            render(screen, "Электрические характеристики датчиков положения привода СУЗ - ШЭМ", (100,300), 40)
                         else:
                             print("Error")
                 elif px.loop == 22:
@@ -293,9 +297,9 @@ def main():
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 done = True
-                        b1 = button(screen, (infoObject.current_w - 870, 100), "Вариант А", 50)
-                        b2 = button(screen, (infoObject.current_w - 870, 200), "Вариант Б", 50)
-                        b3 = button(screen, (infoObject.current_w - 870, 300), "Вариант В", 50)
+                        b1 = button(screen, (infoObject.current_w - 870, 100), "Вариант А", 50, False)
+                        b2 = button(screen, (infoObject.current_w - 870, 200), "Вариант Б", 50, False)
+                        b3 = button(screen, (infoObject.current_w - 870, 300), "Вариант В", 50, False)
                         if event.type == pygame.MOUSEBUTTONDOWN:
                                 if b1.collidepoint(event.pos):
                                                 VariantA()
@@ -328,3 +332,4 @@ if __name__ == '__main__':
     pygame.init()
     main()
     pygame.quit()
+subprocess.call(str(path.join(path.dirname(__file__), filename)))
